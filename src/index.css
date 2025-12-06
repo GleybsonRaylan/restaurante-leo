@@ -1,0 +1,318 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap");
+
+@layer base {
+  :root {
+    /* Cores principais refinadas - CORRIGIDO: removido HSL() das variáveis */
+    --background: 220 10% 8%;
+    --foreground: 60 20% 98%;
+
+    /* Sistema de cores mais sofisticado */
+    --card: 220 10% 10%;
+    --card-foreground: 60 20% 98%;
+
+    --popover: 220 10% 10%;
+    --popover-foreground: 60 20% 98%;
+
+    /* Primary mais suave e profissional */
+    --primary: 355 85% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary com mais profundidade */
+    --secondary: 220 10% 15%;
+    --secondary-foreground: 60 20% 98%;
+
+    /* Cores neutras melhoradas */
+    --muted: 220 10% 20%;
+    --muted-foreground: 220 10% 65%;
+
+    /* Accent mais equilibrado */
+    --accent: 43 95% 58%;
+    --accent-foreground: 220 10% 8%;
+
+    /* Destructive mais profissional */
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Elementos de UI refinados */
+    --border: 220 10% 22%;
+    --input: 220 10% 18%;
+    --ring: 355 85% 55%;
+
+    /* Border radius mais sutil */
+    --radius: 0.5rem;
+
+    /* Sidebar aprimorado */
+    --sidebar-background: 220 10% 8%;
+    --sidebar-foreground: 60 20% 98%;
+    --sidebar-primary: 355 85% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 10% 15%;
+    --sidebar-accent-foreground: 60 20% 98%;
+    --sidebar-border: 220 10% 22%;
+    --sidebar-ring: 355 85% 55%;
+
+    /* CORRIGIDO: Variável shadow-color adicionada */
+    --shadow-color: 220 10% 5%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: "Inter", "Poppins", sans-serif;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 2rem;
+  }
+
+  /* Tipografia melhorada */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl;
+  }
+
+  /* Seleção de texto estilizada */
+  ::selection {
+    @apply bg-primary/30 text-foreground;
+  }
+
+  ::-moz-selection {
+    @apply bg-primary/30 text-foreground;
+  }
+}
+
+@layer components {
+  /* Botões aprimorados */
+  .btn-primary {
+    @apply relative bg-primary text-primary-foreground font-semibold py-3 px-6 rounded-lg 
+           min-h-[44px] transition-all duration-300 ease-out
+           hover:brightness-110 active:scale-[0.98] disabled:opacity-50
+           shadow-lg hover:shadow-xl
+           border-0 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary/50 text-secondary-foreground font-medium py-3 px-6 rounded-lg 
+           min-h-[44px] transition-all duration-300 ease-out border border-border
+           hover:bg-secondary hover:border-primary/30 active:scale-[0.98]
+           shadow-sm hover:shadow-md backdrop-blur-sm;
+  }
+
+  .btn-accent {
+    @apply bg-accent text-accent-foreground font-bold py-3 px-6 rounded-lg 
+           min-h-[44px] transition-all duration-300 ease-out
+           hover:brightness-110 active:scale-[0.98] hover:shadow-lg
+           border-0 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2;
+  }
+
+  /* Cards */
+  .card-item {
+    @apply bg-card/60 backdrop-blur-sm rounded-xl border border-border/50 p-6 transition-all duration-300
+           hover:border-primary/50 hover:shadow-2xl
+           hover:-translate-y-0.5 hover:bg-card/80;
+  }
+
+  /* Chips */
+  .selection-chip {
+    @apply px-4 py-2.5 rounded-full border transition-all duration-300 cursor-pointer
+           min-h-[44px] flex items-center justify-center text-sm font-medium
+           hover:scale-[1.02] active:scale-[0.98];
+  }
+
+  .selection-chip-inactive {
+    @apply border-border/50 bg-secondary/30 text-foreground/80 hover:border-primary/40 hover:bg-secondary/50;
+  }
+
+  .selection-chip-active {
+    @apply border-primary bg-primary/15 text-primary shadow-md;
+  }
+
+  .selection-chip-accent {
+    @apply border-accent bg-accent/15 text-accent shadow-md;
+  }
+
+  /* Input fields */
+  .input-field {
+    @apply w-full bg-secondary/30 border border-border rounded-lg px-4 py-3.5 
+           text-foreground placeholder:text-muted-foreground/70
+           focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent
+           min-h-[44px] transition-all duration-300 backdrop-blur-sm
+           focus:bg-secondary/50 focus:shadow-lg;
+  }
+
+  /* Step indicator */
+  .step-indicator {
+    @apply w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold
+           transition-all duration-500 shadow-md;
+  }
+
+  .step-indicator-active {
+    @apply bg-primary text-primary-foreground shadow-lg;
+  }
+
+  .step-indicator-completed {
+    @apply bg-accent text-accent-foreground shadow-lg;
+  }
+
+  .step-indicator-inactive {
+    @apply bg-muted/50 text-muted-foreground shadow-sm;
+  }
+
+  /* Toasts */
+  .toast-success {
+    @apply bg-accent text-accent-foreground shadow-lg backdrop-blur-sm;
+  }
+
+  .toast-error {
+    @apply bg-destructive text-destructive-foreground shadow-lg backdrop-blur-sm;
+  }
+
+  /* Skeleton */
+  .skeleton {
+    @apply bg-gradient-to-r from-muted via-muted/50 to-muted animate-pulse rounded-lg;
+  }
+
+  /* Bottom navigation */
+  .bottom-nav-item {
+    @apply flex flex-col items-center justify-center py-3 px-4 min-h-[60px]
+           text-muted-foreground transition-all duration-300 relative
+           hover:text-primary;
+  }
+
+  .bottom-nav-item-active {
+    @apply text-primary;
+  }
+
+  .bottom-nav-item-active::after {
+    content: "";
+    @apply absolute bottom-0 left-1/2 transform -translate-x-1/2
+           w-1 h-1 rounded-full bg-primary;
+  }
+}
+
+@layer utilities {
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 20px);
+  }
+
+  .safe-top {
+    padding-top: env(safe-area-inset-top, 20px);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-gradient {
+    background: linear-gradient(
+      to right,
+      hsl(var(--primary)),
+      hsl(var(--accent))
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glass-effect {
+    @apply backdrop-blur-md bg-white/5 border border-white/10;
+  }
+
+  .hover-lift {
+    @apply transition-transform duration-300 hover:-translate-y-1;
+  }
+}
+
+/* Animações simplificadas */
+@keyframes slide-up {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scale-in {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.4s ease-out;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.3s ease-out;
+}
+
+/* Scrollbar customizada */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-muted/30 rounded-full;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary rounded-full;
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary/80;
+}
