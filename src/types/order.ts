@@ -101,7 +101,7 @@ export const PRATOS_EXTRAS = [
     name: "Macarrão à Bolonhesa",
     price: 20,
     description: "Porção generosa com molho tradicional caseiro.",
-    image: "/images/macarrao-bolonhesa.jpg",
+    image: "/images/macarrao-bolon.jpeg",
   },
   {
     name: "Camarão ao Molho Branco",
