@@ -32,7 +32,19 @@ export interface SobremesaOrder {
   sabor?: string;
 }
 
-export type CartItem = MarmitaOrder | PratoOrder | SobremesaOrder;
+// INTERFACE PARA BEBIDAS - SIMPLIFICADA (sem image obrigatório)
+export interface BebidaOrder {
+  id: string;
+  type: "bebida";
+  name: string;
+  description: string;
+  price: number;
+  quantity: number;
+  category?: string; // Tornando opcional
+}
+
+// ATUALIZADO: Adicionar BebidaOrder ao tipo CartItem
+export type CartItem = MarmitaOrder | PratoOrder | SobremesaOrder | BebidaOrder;
 
 export interface DeliveryInfo {
   type: "entrega" | "retirada";
@@ -148,4 +160,115 @@ export const SOBREMESAS = [
   },
 ] as const;
 
+// CONSTANTE PARA BEBIDAS - SIMPLIFICADA (sem campo image)
+export const BEBIDAS = [
+  {
+    id: "refri-2l",
+    name: "Refrigerante 2 Litros",
+    description: "Refrigerante 2L (Coca-Cola, Guaraná, Fanta)",
+    price: 15,
+    category: "bebidas",
+  },
+  {
+    id: "refri-1l",
+    name: "Refrigerante 1 Litro",
+    description: "Refrigerante 1L (Coca-Cola, Guaraná, Fanta)",
+    price: 10,
+    category: "bebidas",
+  },
+  {
+    id: "refri-lata",
+    name: "Refrigerante Lata 350ml",
+    description: "Refrigerante lata 350ml",
+    price: 7,
+    category: "bebidas",
+  },
+  {
+    id: "agua-1-5l",
+    name: "Água sem Gás 1,5L",
+    description: "Água mineral sem gás 1,5L",
+    price: 6,
+    category: "bebidas",
+  },
+  {
+    id: "agua-500ml",
+    name: "Água sem Gás 500ml",
+    description: "Água mineral sem gás 500ml",
+    price: 3,
+    category: "bebidas",
+  },
+  {
+    id: "agua-gas-500ml",
+    name: "Água com Gás 500ml",
+    description: "Água mineral com gás 500ml",
+    price: 5,
+    category: "bebidas",
+  },
+  {
+    id: "agua-tonica",
+    name: "Água Tônica Lata",
+    description: "Água tônica lata",
+    price: 6,
+    category: "bebidas",
+  },
+  {
+    id: "h2o",
+    name: "H2O",
+    description: "Limoneto",
+    price: 5,
+    category: "bebidas",
+  },
+  {
+    id: "suco-jarro-leite",
+    name: "Suco Jarro 750ml com Leite",
+    description: "Suco natural jarro 750ml com leite",
+    price: 15,
+    category: "bebidas",
+  },
+  {
+    id: "suco-jarro-agua",
+    name: "Suco Jarro 750ml com Água",
+    description: "Suco natural jarro 750ml com água",
+    price: 12,
+    category: "bebidas",
+  },
+  {
+    id: "suco-copo-leite",
+    name: "Suco Copo 400ml com Leite",
+    description: "Suco natural copo 400ml com leite",
+    price: 6,
+    category: "bebidas",
+  },
+  {
+    id: "suco-copo-agua",
+    name: "Suco Copo 400ml com Água",
+    description: "Suco natural copo 400ml com água",
+    price: 5,
+    category: "bebidas",
+  },
+] as const;
+
 export const DELIVERY_FEE = 2;
+
+// Função auxiliar para criar ID único
+export function generateUniqueId(): string {
+  return `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+}
+
+// Função para criar um item de bebida no carrinho - SIMPLIFICADA
+export function createBebidaOrder(
+  name: string,
+  description: string,
+  price: number,
+  category?: string
+): BebidaOrder {
+  return {
+    id: generateUniqueId(),
+    type: "bebida",
+    name,
+    description,
+    price,
+    quantity: 1,
+    category,
+  };
+}

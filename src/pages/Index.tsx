@@ -3,6 +3,7 @@ import {
   Utensils,
   ChefHat,
   IceCream,
+  GlassWater,
   ArrowRight,
   Star,
   Clock,
@@ -10,7 +11,6 @@ import {
   Sparkles,
 } from "lucide-react";
 import Layout from "@/components/Layout";
-import CategoryCard from "@/components/CategoryCard";
 
 export default function Index() {
   const navigate = useNavigate();
@@ -24,11 +24,6 @@ export default function Index() {
           <div className="absolute top-0 right-0 w-40 h-40 bg-accent/30 rounded-full blur-3xl" />
           <div className="absolute bottom-0 left-0 w-32 h-32 bg-primary/30 rounded-full blur-3xl" />
           <div className="absolute top-1/2 right-1/4 w-20 h-20 bg-accent/20 rounded-full blur-2xl" />
-
-          {/* Hero image placeholder */}
-          <div className="absolute right-0 top-0 w-1/3 h-full opacity-20">
-            <div className="w-full h-full bg-gradient-to-l from-transparent to-transparent" />
-          </div>
 
           <div className="relative z-10">
             <div className="flex items-center gap-2 mb-3">
@@ -87,27 +82,113 @@ export default function Index() {
           </div>
 
           <div className="space-y-4">
-            <CategoryCard
-              title="Marmitas"
-              description="Monte sua marmita personalizada com suas escolhas"
-              icon={<Utensils size={28} />}
+            {/* Marmitas */}
+            <button
               onClick={() => navigate("/marmita")}
-              color="primary"
-            />
-            <CategoryCard
-              title="Pratos Extras"
-              description="Pratos especiais preparados pelo chef"
-              icon={<ChefHat size={28} />}
+              className="w-full text-left bg-gradient-to-r from-primary/10 to-primary/5 border border-primary/20 rounded-xl p-4 hover:bg-primary/15 hover:border-primary/30 transition-all duration-300 group"
+            >
+              <div className="flex items-center gap-4">
+                <div className="w-14 h-14 rounded-xl bg-primary/20 flex items-center justify-center group-hover:bg-primary/30 transition-colors">
+                  <Utensils className="w-7 h-7 text-primary" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-bold text-lg text-foreground">
+                    Marmitas
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    Monte sua marmita personalizada com suas escolhas
+                  </p>
+                </div>
+                <div className="text-primary">
+                  <svg
+                    className="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </button>
+
+            {/* Pratos Extras */}
+            <button
               onClick={() => navigate("/pratos")}
-              color="accent"
-            />
-            <CategoryCard
-              title="Sobremesas"
-              description="Doces irresistíveis para adoçar seu dia"
-              icon={<IceCream size={28} />}
+              className="w-full text-left bg-gradient-to-r from-accent/10 to-accent/5 border border-accent/20 rounded-xl p-4 hover:bg-accent/15 hover:border-accent/30 transition-all duration-300 group"
+            >
+              <div className="flex items-center gap-4">
+                <div className="w-14 h-14 rounded-xl bg-accent/20 flex items-center justify-center group-hover:bg-accent/30 transition-colors">
+                  <ChefHat className="w-7 h-7 text-accent" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-bold text-lg text-foreground">
+                    Pratos Extras
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    Pratos especiais preparados pelo chef
+                  </p>
+                </div>
+                <div className="text-accent">
+                  <svg
+                    className="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </button>
+
+            {/* Sobremesas & Bebidas */}
+            <button
               onClick={() => navigate("/sobremesas")}
-              color="primary"
-            />
+              className="w-full text-left bg-gradient-to-r from-purple-500/10 to-pink-500/5 border border-purple-500/20 rounded-xl p-4 hover:bg-purple-500/15 hover:border-purple-500/30 transition-all duration-300 group"
+            >
+              <div className="flex items-center gap-4">
+                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-pink-500/20 to-purple-500/20 flex items-center justify-center group-hover:from-pink-500/30 group-hover:to-purple-500/30 transition-colors">
+                  <div className="relative">
+                    <IceCream className="w-6 h-6 text-pink-600" />
+                    <GlassWater className="w-4 h-4 text-blue-500 absolute -bottom-1 -right-1" />
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-bold text-lg text-foreground">
+                    Sobremesas & Bebidas
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    Doces irresistíveis e bebidas refrescantes
+                  </p>
+                </div>
+                <div className="text-purple-500">
+                  <svg
+                    className="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </button>
           </div>
         </div>
 

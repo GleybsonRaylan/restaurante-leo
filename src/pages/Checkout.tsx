@@ -19,6 +19,7 @@ import {
   MarmitaOrder,
   PratoOrder,
   SobremesaOrder,
+  BebidaOrder, // ADICIONE ESTA IMPORT
 } from "@/types/order";
 
 export default function Checkout() {
@@ -102,6 +103,12 @@ export default function Checkout() {
         message += ` — R$${s.price.toFixed(2).replace(".", ",")}`;
         if (s.quantity > 1) message += ` x${s.quantity}`;
         message += "\n\n";
+      } else if (item.type === "bebida") {
+        // ADICIONE ESTE BLOCO
+        const b = item as BebidaOrder;
+        message += `👉 *${b.name}* — R$${b.price.toFixed(2).replace(".", ",")}`;
+        if (b.quantity > 1) message += ` x${b.quantity}`;
+        message += `\n   ${b.description}\n\n`;
       }
     });
 
