@@ -9,6 +9,7 @@ import {
   Clock,
   Truck,
   Sparkles,
+  MapPin,
 } from "lucide-react";
 import Layout from "@/components/Layout";
 
@@ -53,7 +54,7 @@ export default function Index() {
               </div>
               <div className="flex items-center gap-2 bg-card/50 px-3 py-2 rounded-lg">
                 <Truck size={16} className="text-accent" />
-                <span className="text-xs font-medium">Taxa R$2</span>
+                <span className="text-xs font-medium">Taxa R$2+</span>
               </div>
               <div className="flex items-center gap-2 bg-card/50 px-3 py-2 rounded-lg">
                 <Sparkles size={16} className="text-accent" />
@@ -221,22 +222,62 @@ export default function Index() {
           </div>
         </div>
 
-        {/* Promo Banner */}
+        {/* Entrega Banner - ATUALIZADO */}
         <div className="bg-gradient-to-r from-accent/20 to-accent/10 rounded-2xl p-5 border border-accent/20">
           <div className="flex items-start gap-4">
             <div className="w-14 h-14 rounded-2xl bg-accent/30 flex items-center justify-center flex-shrink-0">
-              <Truck size={28} className="text-accent" />
+              <div className="relative">
+                <Truck size={24} className="text-accent" />
+                <MapPin
+                  size={14}
+                  className="text-white absolute -top-1 -right-1"
+                />
+              </div>
             </div>
             <div>
               <h4 className="font-bold text-foreground mb-1">
                 Entrega para toda cidade
               </h4>
-              <p className="text-sm text-muted-foreground">
-                Taxa fixa de apenas{" "}
-                <span className="text-accent font-bold">R$ 2,00</span> para sua
-                comodidade.
+              <p className="text-sm text-muted-foreground mb-2">
+                Taxa base de{" "}
+                <span className="text-accent font-bold">R$ 2,00</span>{" "}
+                <span className="text-xs text-muted-foreground">
+                  (valor pode variar conforme o local)
+                </span>
               </p>
+              <div className="flex items-center gap-2 text-xs">
+                <div className="w-2 h-2 rounded-full bg-green-500"></div>
+                <span className="text-muted-foreground">
+                  Consulte o valor exato durante o pedido
+                </span>
+              </div>
             </div>
+          </div>
+        </div>
+
+        {/* Observação sobre entrega */}
+        <div className="mt-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
+          <div className="flex items-start gap-2">
+            <div className="w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg
+                className="w-3 h-3 text-blue-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+            </div>
+            <p className="text-xs text-blue-700">
+              <span className="font-semibold">Atenção:</span> O valor da entrega
+              pode ser ajustado conforme a distância. O valor final será
+              confirmado pelo WhatsApp.
+            </p>
           </div>
         </div>
       </div>
